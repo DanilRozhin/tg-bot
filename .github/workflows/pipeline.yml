@@ -2,7 +2,7 @@ name: TG-bot pipeline
 
 on:
     schedule:
-        - cron: "11 23 * * *"
+        - cron: "*/5 * * * *"
 
 jobs:
     tests:

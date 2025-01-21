@@ -16,4 +16,4 @@ jobs:
               with:
                   python-version: '3.11'
             - name: Running
-              run: ./bot.py
+              run: python ./bot.py

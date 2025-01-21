@@ -26,18 +26,17 @@ async def cmd_text(message: Message):
 
 async def main():
 
-    # today_date = datetime.date.today()
-    # url = 'https://www.championat.com/stat/#' + str(today_date)
-    # response = requests.get(url, headers={
-    #     "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/116.0.0.0 Safari/537.36"
-    # })
-    # bs = str(BeautifulSoup(response.text, 'lxml'))
-    # if 'Реал Мадрид' in bs:
-    #     await bot.send_message(1232626150, 'Real Madrid is playing today')
-    await bot.send_message(418223763, 'Alina is SigmaGirl')
+    today_date = datetime.date.today()
+    url = 'https://www.championat.com/stat/#' + str(today_date)
+    response = requests.get(url, headers={
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/116.0.0.0 Safari/537.36"
+    })
+    bs = str(BeautifulSoup(response.text, 'lxml'))
+    if 'Реал Мадрид' in bs:
+        await bot.send_message(1232626150, 'Real Madrid is playing today')
+    # await bot.send_message(418223763, 'Alina is SigmaGirl')
     # await bot.send_message(1232626150, 'Starting...')
     # await dp.start_polling(bot)
 
 if __name__ == '__main__':
     asyncio.run(main())
-# ф

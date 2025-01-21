@@ -1,9 +1,9 @@
 name: TG-bot pipeline
 
 on:
-    push:
-        branches:
-            - main
+    schedule:
+        - cron: '04 23 * * *'
+
 jobs:
     tests:
         runs-on: windows-latest

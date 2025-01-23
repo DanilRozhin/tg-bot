@@ -1,0 +1,6 @@
+requests
+aiogram
+asyncio
+datetime
+beautifulsoup4
+lxml

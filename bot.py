@@ -37,7 +37,7 @@ async def main():
         await bot.send_message(1232626150, 'Real Madrid maybe playing today')
     # await bot.send_message(418223763, '''Плановое выполнение скрипта, 
     #                        сообщите автору об успешном выполнении программы''')
-    await bot.send_message(1232626150, 'Выполнено')
+    await bot.send_message(1232626150, 'Код выполнен')
     # await bot.send_message(1232626150, 'Starting...')
     # await dp.start_polling(bot)
 

@@ -1,13 +1,13 @@
 name: TG-bot pipeline
 
-# on:
-#     schedule:
-#         - cron: "0 14 * * *"
-
 on:
-  push:
-    branches:
-      - main
+  schedule:
+    - cron: '0 14 * * *'
+
+# on:
+#   push:
+#     branches:
+#       - main
 
 jobs:
     tests:

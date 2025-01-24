@@ -17,20 +17,6 @@ jobs:
       - name: Checkout repo
         uses: actions/checkout@v3
 
-      - name: Install Doppler CLI
-        uses: dopplerhq/cli-action@v3
-
-      - name: Upload Secrets to Doppler
-        run: |
-          doppler secrets upload --project "$DOPPLER_PROJECT" --config "$DOPPLER_CONFIG"  --silent <(echo "$GITHUB_SECRETS" |
-          jq 'del(.github_token, .DOPPLER_TOKEN, .DOPPLER_PROJECT, .DOPPLER_CONFIG) | 
-          with_entries( .key |= ascii_upcase )')
-        env:
-          DOPPLER_TOKEN: ${{ secrets.DOPPLER_TOKEN }}
-          DOPPLER_PROJECT: ${{ secrets.DOPPLER_PROJECT }}
-          DOPPLER_CONFIG: ${{ secrets.DOPPLER_CONFIG }}
-          GITHUB_SECRETS: ${{ toJson(secrets) }}
-
       - name: Cache deps
         uses: actions/cache@v3
         with:
@@ -39,15 +25,6 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-pip-
 
-      - name: Fetch secrets from Doppler
-        env:
-          DOPPLER_TOKEN: ${{ secrets.DOPPLER_TOKEN }}
-        run: doppler secrets download --project "$DOPPLER_PROJECT" --config "$DOPPLER_CONFIG" --format env > secrets.env
-
-      - name: Load secrets
-        run: |
-          source secrets.env
-          
       - name: Setup Python
         uses: actions/setup-python@v3
         with:

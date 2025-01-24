@@ -44,9 +44,9 @@ jobs:
           DOPPLER_TOKEN: ${{ secrets.DOPPLER_TOKEN }}
         run: doppler secrets download --project "$DOPPLER_PROJECT" --config "$DOPPLER_CONFIG" --format env > secrets.env
 
-      - name: Load secrets
-        run: |
-          export $(cat secrets.env | xargs)
+      # - name: Load secrets
+      #   run: |
+      #     export $(cat secrets.env | xargs)
 
       - name: Setup Python
         uses: actions/setup-python@v3

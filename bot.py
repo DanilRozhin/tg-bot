@@ -9,6 +9,7 @@ from aiogram.filters import *
 from aiogram.types import *
 
 TG_TOKEN = os.getenv('TG_TOKEN')
+print(TG_TOKEN)
 
 bot = Bot(token=TG_TOKEN)
 dp = Dispatcher()

@@ -46,10 +46,8 @@ jobs:
 
       - name: Load secrets
         run: |
-          set -a
           source secrets.env
-          set +a
-
+          
       - name: Setup Python
         uses: actions/setup-python@v3
         with:

@@ -52,4 +52,4 @@ jobs:
       - name: Running
         run: python bot.py
         env:
-          TOKEN: ${{ env.TOKEN }}
+          TG_TOKEN: ${{ env.TG_TOKEN }}

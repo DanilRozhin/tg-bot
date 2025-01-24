@@ -1,13 +1,14 @@
 import asyncio
 import requests
 import datetime
+import os
 from bs4 import BeautifulSoup
 
 from aiogram import *
 from aiogram.filters import *
 from aiogram.types import *
 
-TOKEN = '7777928656:AAGCd2EEuEZwszefm6OPDoPiqPEe__-qfpU'
+TOKEN = os.getenv('TOKEN')
 
 bot = Bot(token=TOKEN)
 dp = Dispatcher()

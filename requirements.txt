@@ -4,3 +4,4 @@ asyncio
 datetime
 beautifulsoup4
 lxml
+os

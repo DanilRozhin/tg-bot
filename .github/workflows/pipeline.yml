@@ -42,7 +42,7 @@ jobs:
       - name: Fetch secrets from Doppler
         env:
           DOPPLER_TOKEN: ${{ secrets.DOPPLER_TOKEN }}
-        run: doppler secrets download --project "$DOPPLER_PROJECT" --config "$DOPPLER_CONFIG" --format dotenv > secrets.env
+        run: doppler secrets download --project "$DOPPLER_PROJECT" --config "$DOPPLER_CONFIG" --format env > secrets.env
 
       - name: Load secrets
         run: |

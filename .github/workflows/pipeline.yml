@@ -10,46 +10,46 @@ on:
       - main
 
 jobs:
-    tests:
-        runs-on: windows-latest
-        timeout-minutes: 10
-        steps:
-            - name: Checkout repo
-              uses: actions/checkout@v3
+  tests:
+    runs-on: ubuntu-22.04
+    timeout-minutes: 10
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v3
 
-            - name: Install Doppler CLI
-              uses: dopplerhq/cli-action@v3
+      - name: Install Doppler CLI
+        uses: dopplerhq/cli-action@v3
 
-            - name: Upload Secrets to Doppler
-              run: |
-                doppler secrets upload --project "$DOPPLER_PROJECT" --config "$DOPPLER_CONFIG"  --silent <(echo "$GITHUB_SECRETS" |
-                jq 'del(.github_token, .DOPPLER_TOKEN, .DOPPLER_PROJECT, .DOPPLER_CONFIG) | 
-                with_entries( .key |= ascii_upcase )')
-              env:
-                DOPPLER_TOKEN: ${{ secrets.DOPPLER_TOKEN }}
-                DOPPLER_PROJECT: ${{ secrets.DOPPLER_PROJECT }}
-                DOPPLER_CONFIG: ${{ secrets.DOPPLER_CONFIG }}
-                GITHUB_SECRETS: ${{ toJson(secrets) }}
+      - name: Upload Secrets to Doppler
+        run: |
+          doppler secrets upload --project "$DOPPLER_PROJECT" --config "$DOPPLER_CONFIG"  --silent <(echo "$GITHUB_SECRETS" |
+          jq 'del(.github_token, .DOPPLER_TOKEN, .DOPPLER_PROJECT, .DOPPLER_CONFIG) | 
+          with_entries( .key |= ascii_upcase )')
+        env:
+          DOPPLER_TOKEN: ${{ secrets.DOPPLER_TOKEN }}
+          DOPPLER_PROJECT: ${{ secrets.DOPPLER_PROJECT }}
+          DOPPLER_CONFIG: ${{ secrets.DOPPLER_CONFIG }}
+          GITHUB_SECRETS: ${{ toJson(secrets) }}
 
-            - name: Cache deps
-              uses: actions/cache@v3
-              with:
-                path: cache/pip.cache
-                key: ${{ runner.os }}-pip-${{ hashFiles('**/requirements.txt') }}
-                restore-keys: |
-                  ${{ runner.os }}-pip-
+      - name: Cache deps
+        uses: actions/cache@v3
+        with:
+          path: cache/pip.cache
+          key: ${{ runner.os }}-pip-${{ hashFiles('**/requirements.txt') }}
+          restore-keys: |
+            ${{ runner.os }}-pip-
 
-            - name: Setup Python
-              uses: actions/setup-python@v3
-              with:
-                  python-version: '3.11'
+      - name: Setup Python
+        uses: actions/setup-python@v3
+        with:
+            python-version: '3.11'
 
-            - name: Install deps
-              run: |
-                python -m pip install --upgrade pip
-                pip install -r requirements.txt
+      - name: Install deps
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
 
-            - name: Running
-              run: python bot.py
-              env:
-                TOKEN: ${{ env.TOKEN }}
+      - name: Running
+        run: python bot.py
+        env:
+          TOKEN: ${{ env.TOKEN }}

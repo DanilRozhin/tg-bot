@@ -61,4 +61,4 @@ jobs:
       - name: Running
         run: python bot.py
         env:
-          TG_TOKEN: ${{ env.TG_TOKEN }}
+          TG_TOKEN: $(doppler secrets get TG_TOKEN --plain)

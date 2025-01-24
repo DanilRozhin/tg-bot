@@ -37,7 +37,7 @@ async def main():
     if 'Реал Мадрид' in bs:
         await bot.send_message(1232626150, 'Real Madrid maybe playing today')
     # await bot.send_message(418223763, 'Плановое выполнение скрипта, сообщите автору об успешном выполнении программы')
-    await bot.send_message(1232626150, 'Код выполнен')
+    await bot.send_message(1232626150, 'Завершен')
     # await dp.start_polling(bot)
 
 if __name__ == '__main__':

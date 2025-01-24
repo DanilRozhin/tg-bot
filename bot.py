@@ -8,8 +8,9 @@ from aiogram import *
 from aiogram.filters import *
 from aiogram.types import *
 
-TG_TOKEN = os.getenv('TG_TOKEN')
-print(TG_TOKEN)
+tg = os.getenv('TG_TOKEN')
+a = str(tg) + '!!!'
+print(a)
 
 # bot = Bot(token=TG_TOKEN)
 # dp = Dispatcher()

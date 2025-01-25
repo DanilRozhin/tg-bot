@@ -34,9 +34,9 @@ async def main():
     })
     bs = str(BeautifulSoup(response.text, 'lxml'))
     if 'Реал Мадрид' in bs:
-        await bot.send_message(1232626150, 'Real Madrid is probably playing today')
-        # await bot.send_message(418223763, 'Real Madrid is probably playing today')
-    # await bot.send_message(418223763, 'Купи автору печенек')
+        await bot.send_message(1232626150, 'Real Madrid is playing today, watch it')
+        await bot.send_message(418223763, 'Real Madrid is playing today watch it')
+    await bot.send_message(418223763, 'Сидим с бобром за столом')
     await bot.send_message(1232626150, 'Код выполнен')
     # await dp.start_polling(bot)
 

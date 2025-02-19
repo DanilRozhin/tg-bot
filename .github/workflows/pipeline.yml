@@ -36,4 +36,4 @@ jobs:
           pip install -r requirements.txt
 
       - name: Running
-        run: echo 5
+        run: echo "Done"

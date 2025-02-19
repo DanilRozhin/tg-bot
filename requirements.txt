@@ -1,6 +1,4 @@
-requests
-aiogram
 asyncio
+aiogram
+playwright
 datetime
-beautifulsoup4
-lxml
